@@ -4,12 +4,16 @@
 ```
 npm install
 npm run watch
+```
 
 ### 命令说明
+```
 npm run watch 开发使用 自动监听文件变化进行生成
 npm run devStart 生成开发版文件
 npm run gaStart 生成生产版文件
 npm run test 运行单元测试
+```
+
 ### 文件介绍
 ```
 ├── config  配置文件

@@ -1,15 +1,15 @@
 import { HelloService } from "./hello-service.interface";
 
-export class HelloComponent {
+export default class HelloComponent {
 
-    constructor(private helloService: HelloService) {}
+    constructor(private helloService: HelloService) { }
 
     public sayHello(): string {
 
         return this.helloService.sayHello();
     }
 
-    public s(){
+    public s() {
         console.log(123)
     }
 }

@@ -11,22 +11,12 @@ import * as build from "./config/build" //配置文件
 import postcss from 'rollup-plugin-postcss'; //样式处理
 import autoprefixer from 'autoprefixer'; //自动补全
 import cssnano from 'cssnano'; //样式的压缩合并
-
+import tsconfigOverride from "./.tsconfig.json"
 const env = process.env.NODE_ENV;
 
 const rollupTs = () => {
     var ts = typescript({
-        tsconfigOverride: {
-            compilerOptions: {
-                sourceMap: env === 'production' ? false : true, //允许调试
-                inlineSourceMap: env === 'production' ? true : false,
-                module: "es2015",
-                target: "es2017",
-                allowJs: true,
-                allowSyntheticDefaultImports: true
-            },
-            exclude: ["node_modules"]
-        }
+        tsconfigOverride: tsconfigOverride
     })
     return ts;
 }
@@ -43,12 +33,13 @@ const config = () => {
         if (obj) {
             ary.push({
                 context: 'window',
-                input: "./script/" + obj.input, //入口未见
+                input: "./" + obj.input, //入口未见
                 output: {
-                    file: "./script/" + obj.jsfile, //输出文件
+                    file: "./" + obj.jsfile, //输出文件
                     format: obj.format || "umd", //输出格式：立即执行函数表达式   which can be one of 'amd', 'cjs', 'system', 'esm', 'iife' or 'umd'
                     name: obj.name || "fx", //umd or iife 下的方法的命名
-                    //sourcemap: (env === 'production' ? "inline" : true),  //代码映射，方便调试
+                    //external: ['jquery'], 
+                    sourcemap: (env === 'production' ? false : true), //代码映射，方便调试
                 },
                 plugins: [
                     json(),
@@ -63,7 +54,7 @@ const config = () => {
                     postcss({
                         extensions: ['.css', '.less', '.scss', '.sss', '.pcss'], //处理以这些扩展名结尾的文件
                         plugins: [autoprefixer, cssnano],
-                        extract: "./script/" + obj.lessfile // 输出路径
+                        extract: "./" + obj.lessfile // 输出路径
                     }),
                     babel({
                         exclude: 'node_modules/**',

@@ -1,8 +1,8 @@
-/// <reference path="../../node_modules/@types/mocha/index.d.ts" />
-/// <reference path="../../node_modules/@types/expect.js/index.d.ts" />
+/// <reference path="../node_modules/@types/mocha/index.d.ts" />
+/// <reference path="../node_modules/@types/expect.js/index.d.ts" />
 
-import { HelloService } from "../../script/karam-test/hello-service.interface";
-import { HelloComponent } from "../../script/karam-test/hello.component";
+import { HelloService } from "../src/hello-service.interface";
+import HelloComponent from "../src/hello.component";
 
 class MockHelloService implements HelloService {
 

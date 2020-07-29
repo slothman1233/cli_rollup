@@ -6,7 +6,7 @@ import commonjs from 'rollup-plugin-commonjs' // 将非ES6语法的包转为ES6�
 import { uglify } from 'rollup-plugin-uglify' //js压缩                          // 压缩包
 import json from 'rollup-plugin-json' //读取JSON 文件中的数据
 import * as build from "./config/build" //配置文件
-
+import nested from "postcss-nested"
 //style处理
 import postcss from 'rollup-plugin-postcss'; //样式处理
 import autoprefixer from 'autoprefixer'; //自动补全
@@ -46,15 +46,12 @@ const config = () => {
                     rollupTs(),
                     commonjs(),
                     resolves({
-                        jsnext: true, // 该属性是指定将Node包转换为ES2015模块
-                        // main 和 browser 属性将使插件决定将那些文件应用到bundle中
-                        main: true, // Default: true 
                         browser: true // Default: false
                     }),
                     postcss({
                         extensions: ['.css', '.less', '.scss', '.sss', '.pcss'], //处理以这些扩展名结尾的文件
-                        plugins: [autoprefixer, cssnano],
-                        extract: "./" + obj.lessfile // 输出路径
+                        plugins: [nested(),autoprefixer(), cssnano],
+                        extract: obj.lessfile // 输出路径
                     }),
                     babel({
                         exclude: 'node_modules/**',

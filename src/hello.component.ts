@@ -12,4 +12,8 @@ export default class HelloComponent {
     public s() {
         console.log(123)
     }
+
+    public ss(){
+        console.log(54545)
+    }
 }

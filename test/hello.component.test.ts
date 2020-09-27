@@ -20,6 +20,7 @@ describe("HelloComponent", () => {
    
         expect(helloComponent.sayHello()).to.be("Hello world!");
         expect(helloComponent.s()).to.be.ok; 
+        expect(helloComponent.dd()).to.be.ok;
     });
 });
    

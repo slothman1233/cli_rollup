@@ -19,7 +19,7 @@ module.exports = function (config) {
     //在将匹配文件提供给浏览器之前对其进行预处理
     // available preprocessors：https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      "**/*.ts": ["karma-typescript"]
+       "**/*.ts": ["karma-typescript"]
     },
     //怎么显示测试结果 测试结果显示插件https://npmjs.org/browse/keyword/karma-reporter
     reporters: ["karma-typescript"],
@@ -37,6 +37,7 @@ module.exports = function (config) {
       reports: {
         "html": 'config/karma/coverage/'
       },
+      
       compilerOptions: {
         esModuleInterop: true
       },
@@ -44,7 +45,9 @@ module.exports = function (config) {
         transforms: [
           require("karma-typescript-es6-transform")()  //将ES2015（又名ES6）代码转换为ES5语法
         ]
-      }
+      },
+
+
 
     },
 

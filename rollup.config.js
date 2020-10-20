@@ -12,6 +12,7 @@ import postcss from 'rollup-plugin-postcss'; //样式处理
 import autoprefixer from 'autoprefixer'; //自动补全
 import cssnano from 'cssnano'; //样式的压缩合并
 import tsconfigOverride from "./.tsconfig.json"
+import path from 'path'
 const env = process.env.NODE_ENV;
 
 const rollupTs = () => {
@@ -51,7 +52,7 @@ const config = () => {
                     postcss({
                         extensions: ['.css', '.less', '.scss', '.sss', '.pcss'], //处理以这些扩展名结尾的文件
                         plugins: [nested(),autoprefixer(), cssnano],
-                        extract: obj.lessfile // 输出路径
+                        extract: path.resolve(obj.lessfile)  // 输出路径
                     }),
                     babel({
                         exclude: 'node_modules/**',

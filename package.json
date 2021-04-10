@@ -27,7 +27,7 @@
         "karma-mocha": "^2.0.1",
         "karma-typescript": "^5.0.3",
         "karma-typescript-es6-transform": "^5.0.3",
-        "@stl/tool-ts": "^0.2.4",
+        "wl-tool-ts": "^0.2.4",
         "autoprefixer": "^9.8.5",
         "babel-register": "^6.26.0",
         "cssnano": "^4.1.10",
